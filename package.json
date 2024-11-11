@@ -1,0 +1,19 @@
+{
+  "name": "ffmpeg",
+  "description": "ffmpeg",
+  "author": [
+    "Fabrice Bellard <fabrice@bellard.org>",
+    "Helmut K. C. Tessarek <kc+github@evermeet.cx>",
+    "Keisuke Miyako <keisuke.miyako@4D.com>"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/miyako/ffmpeg",
+  "version": "1.0.0",
+  "tool": {
+    "platform": "macos",
+    "branch": "20.x",
+    "version": "20.5",
+    "build": "latest",
+    "arch": "arm"
+  }
+}
