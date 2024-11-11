@@ -9,7 +9,7 @@ var $in : 4D.File
 $in:=Folder(fk desktop folder).file("sample.mov")
 
 var $ffmpeg : cs.FFmpeg
-$ffmpeg:=cs.FFmpeg.new(cs._FFmpeg_Controller)
+$ffmpeg:=cs.FFmpeg.new()
 
 var $info : Text
 $info:=$ffmpeg.start(["-i"; $in]).controller._worker.wait().responseError
