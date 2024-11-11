@@ -41,3 +41,18 @@ Else
 	
 End if 
 ```
+
+## note on notarisation
+
+need to increase size when creating `.dmg`. `ffmpeg` needs `1GB`, `ffprobe` needs `5GB`.
+
+```
+hdiutil create -format UDBZ -plist -srcfolder {in} {out} -size {size}
+```
+
+else possible "resource is busy" error.
+
+```
+hdiutil: create failed - リソースが使用中です
+```
+
