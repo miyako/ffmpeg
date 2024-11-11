@@ -18,6 +18,7 @@ based on [eugeneware/ffmpeg-static](https://github.com/eugeneware/ffmpeg-static)
 		}
 	}
 }
+```
 
 example of a synchronous call
 
