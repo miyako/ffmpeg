@@ -14,7 +14,7 @@ based on [eugeneware/ffmpeg-static](https://github.com/eugeneware/ffmpeg-static)
 	"dependencies": {
 		"ffmpeg": {
 			"github": "miyako/ffmpeg",
-			"version": "^1.0.0"
+			"version": "^1.0.5"
 		}
 	}
 }
