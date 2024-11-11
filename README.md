@@ -9,7 +9,7 @@ var $in : 4D.File
 $in:=Folder(fk desktop folder).file("sample.mov")
 
 var $ffmpeg : cs.FFmpeg
-$ffmpeg:=cs.FFmpeg.new()
+$ffmpeg:=cs.FFmpeg.FFmpeg.new()
 
 var $info : Text
 $info:=$ffmpeg.start(["-i"; $in]).controller._worker.wait().responseError
@@ -35,7 +35,7 @@ Else
 	$in:=Folder(fk desktop folder).file("sample.mov")
 	$out:=Folder(fk desktop folder).file("sample.mp4")
 	
-	var $ffmpeg : cs.FFmpeg
+	var $ffmpeg : cs.FFmpeg.FFmpeg
 	$ffmpeg:=cs.FFmpeg.new(cs._FFmpeg_Controller)
 	$ffmpeg.start(["-i"; $in; "-vcodec"; "libx264"; $out])
 	
