@@ -1,10 +1,58 @@
 # ffmpeg
 
-based on [eugeneware/ffmpeg-static](https://github.com/eugeneware/ffmpeg-static) releases.
+based on [eugeneware/ffmpeg-static](https://github.com/eugeneware/ffmpeg-static)
 
-### Dependencies and Licensing
+example of a synchronous call
 
-* the source code of this component is licensed under the [MIT license](https://github.com/miyako/ffmpeg/blob/master/LICENSE).
-* see [www.ffmpeg.org](https://www.ffmpeg.org/legal.html) for the licensing of **FFmpeg**.
+```4d
+var $in : 4D.File
+$in:=Folder(fk desktop folder).file("sample.mov")
 
-you may replace the executables in the `bin` folder and/or its dependencies for legal compliance.
+var $ffmpeg : cs.FFmpeg
+$ffmpeg:=cs.FFmpeg.new()
+
+var $info : Text
+$info:=$ffmpeg.start(["-i"; $in]).controller._worker.wait().responseError
+
+ALERT($info)
+```
+
+example of an asynchronous call
+
+```4d
+#DECLARE($params : Object)
+
+If ($params=Null)
+	
+	/*
+		async calls must be performed in a worker or form
+	*/
+	
+	CALL WORKER(1; Current method name; {})
+	
+Else 
+	
+	$in:=Folder(fk desktop folder).file("sample.mov")
+	$out:=Folder(fk desktop folder).file("sample.mp4")
+	
+	var $ffmpeg : cs.FFmpeg
+	$ffmpeg:=cs.FFmpeg.new(cs._FFmpeg_Controller)
+	$ffmpeg.start(["-i"; $in; "-vcodec"; "libx264"; $out])
+	
+End if 
+```
+
+## note on notarisation
+
+need to increase size when creating `.dmg`. `ffmpeg` needs `1GB`, `ffprobe` needs `5GB`.
+
+```
+hdiutil create -format UDBZ -plist -srcfolder {in} {out} -size {size}
+```
+
+else possible "resource is busy" error.
+
+```
+hdiutil: create failed - リソースが使用中です
+```
+
