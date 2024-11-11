@@ -8,7 +8,7 @@ example of a synchronous call
 var $in : 4D.File
 $in:=Folder(fk desktop folder).file("sample.mov")
 
-var $ffmpeg : cs.FFmpeg
+var $ffmpeg : cs.FFmpeg.FFmpeg
 $ffmpeg:=cs.FFmpeg.FFmpeg.new()
 
 var $info : Text
@@ -36,7 +36,7 @@ Else
 	$out:=Folder(fk desktop folder).file("sample.mp4")
 	
 	var $ffmpeg : cs.FFmpeg.FFmpeg
-	$ffmpeg:=cs.FFmpeg.new(cs._FFmpeg_Controller)
+	$ffmpeg:=cs.FFmpeg.FFmpeg.new(cs._FFmpeg_Controller)
 	$ffmpeg.start(["-i"; $in; "-vcodec"; "libx264"; $out])
 	
 End if 
