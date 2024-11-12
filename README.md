@@ -20,6 +20,10 @@ based on [eugeneware/ffmpeg-static](https://github.com/eugeneware/ffmpeg-static)
 }
 ```
 
+the macOS executable targets Apple Silicon. you may download a universal binary edition from releases.
+
+---
+
 example of a synchronous call
 
 ```4d
