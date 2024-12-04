@@ -6,6 +6,6 @@ var $ffmpeg : cs:C1710.FFmpeg
 $ffmpeg:=cs:C1710.FFmpeg.new()
 
 var $info : Text
-$info:=$ffmpeg.start(["-i"; $in]).controller._worker.wait().responseError
+$info:=$ffmpeg.start(["-i"; $in]).worker.wait().error
 
 ALERT:C41($info)
