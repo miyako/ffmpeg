@@ -39,7 +39,7 @@ var $ffmpeg : cs.FFmpeg.FFmpeg
 $ffmpeg:=cs.FFmpeg.FFmpeg.new()
 
 var $info : Text
-$info:=$ffmpeg.start(["-i"; $in]).controller._worker.wait().responseError
+$info:=$ffmpeg.start(["-i"; $in]).worker.wait().error
 
 ALERT($info)
 ```
@@ -63,7 +63,7 @@ Else
 	$out:=Folder(fk desktop folder).file("sample.mp4")
 	
 	var $ffmpeg : cs.FFmpeg.FFmpeg
-	$ffmpeg:=cs.FFmpeg.FFmpeg.new(cs._FFmpeg_Controller)
+	$ffmpeg:=cs.FFmpeg.FFmpeg.new()
 	$ffmpeg.start(["-i"; $in; "-vcodec"; "libx264"; $out])
 	
 End if 
